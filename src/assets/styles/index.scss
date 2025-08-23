@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "fonts";
 
 // ==============================================
 // Utilities
@@ -25,23 +26,6 @@
   padding: 0;
 }
 
-// Font faces
-@font-face {
-  font-family: "Montserrat";
-  src: url("/home/odinstudent/repos/ODIN PROJECTS/odin-cv-application/src/assets/FONT/Montserrat/Montserrat-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("/home/odinstudent/repos/ODIN PROJECTS/odin-cv-application/src/assets/FONT/Rubik/Rubik-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 // Base elements
 body {
   font-synthesis: none;
@@ -49,7 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-  font-family: $font-body;
+  font-family: $font-game;
   color: $dark-grey;
   background-color: $primary-blue;
   font-weight: 400;
@@ -110,7 +94,6 @@ button {
   border: 1px solid transparent;
   padding: 0.4rem;
   font-size: $font-size-small;
-  font-family: $font-body;
   cursor: pointer;
   transition: all $transition-normal;
 
@@ -155,7 +138,6 @@ button {
   border: 2px solid $light-grey;
   border-radius: $input-radius;
   font-size: $font-size-small;
-  font-family: $font-body;
   margin-bottom: 0.5rem;
   transition: border-color $transition-fast;
 
@@ -181,7 +163,6 @@ footer {
   bottom: 1vh;
   left: 0;
   width: 100%;
-  font-family: $font-body;
   font-size: $font-size-small;
   max-height: 6vh;
   z-index: $z-index-footer;

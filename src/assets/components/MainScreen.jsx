@@ -4,6 +4,7 @@ import Card from "./Card.jsx";
 const MainScreen = () => {
   return (
     <main role="contentinfo" aria-label="Site main">
+      <p className="game-title">Pokemon Memory Card Game</p>
       <div className="cards-container">
         {" "}
         <Card id={8} />

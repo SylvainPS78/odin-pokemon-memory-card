@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "fonts";
 
 // ==============================================
 // Layout Principal
@@ -12,6 +13,15 @@
 
   @media (max-width: px) {}
 }*/
+
+// ==============================================
+// Layout Game
+// ==============================================
+.game-title {
+  font-family: $font-game;
+  color: $white;
+  margin: $spacing-md 0 $spacing-sm 0;
+}
 
 // ==============================================
 // Layout Pokemon Cards
@@ -47,6 +57,7 @@
   }
 
   &-name {
+    font-family: $font-card;
     color: $dark-grey;
     font-weight: bold;
   }

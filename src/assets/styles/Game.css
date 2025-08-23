@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Orbitron";
+  src: url("../font/Orbitron/Orbitron-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Press_Start_2P";
+  src: url("../font/Press_Start_2P/PressStart2P-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 /*#root {
   max-width: 1280px;
   text-align: center;
@@ -6,6 +18,12 @@
 
   @media (max-width: px) {}
 }*/
+.game-title {
+  font-family: "Orbitron", "Impact", "Franklin Gothic Bold", sans-serif;
+  color: #ffffff;
+  margin: 2rem 0 1rem 0;
+}
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -34,6 +52,7 @@
      object-fit: contain;
 }
 .pokemon-card-name {
+  font-family: "Press_Start_2P", "Courier New", monospace;
   color: #242940;
   font-weight: bold;
 }/*# sourceMappingURL=Game.css.map */
