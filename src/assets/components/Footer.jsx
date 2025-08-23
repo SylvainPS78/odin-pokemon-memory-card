@@ -17,26 +17,6 @@ const Footer = () => {
           Sylvain Web
         </a>
       </p>
-      <p>
-        Photo by{" "}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href=""
-          aria-label="Visit XXX profile on XXX"
-        >
-          {/* add atrist name if applicable + links  to his page */}
-        </a>{" "}
-        on{" "}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href=""
-          aria-label="View original photo on XXXX"
-        >
-          {/* add picture link if applicable */}
-        </a>
-      </p>
     </footer>
   );
 };
