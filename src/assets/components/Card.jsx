@@ -19,8 +19,12 @@ const Card = ({ id }) => {
 
   return (
     <div className="pokemon-card">
-      <img className="pkemon-card-img" src={pokemon.image} alt={pokemon.name} />
-      <p className="pkemon-card-name">{pokemon.name}</p>
+      <img
+        className="pokemon-card-img"
+        src={pokemon.image}
+        alt={pokemon.name}
+      />
+      <p className="pokemon-card-name">{pokemon.name.toUpperCase()}</p>
     </div>
   );
 };

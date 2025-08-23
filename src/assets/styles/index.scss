@@ -186,9 +186,5 @@ footer {
   max-height: 6vh;
   z-index: $z-index-footer;
 
-  @media (max-width: 1000px) {
-    position: static;
-    margin-top: $spacing-sm;
-    bottom: auto;
-  }
+  // @media (max-width: px) {}
 }
