@@ -4,18 +4,32 @@ import getRandomPokemonList from "../utlitis/getRandomPokemonList.js";
 
 const MainScreen = ({ difficulty }) => {
   const [pokemonList, setPokemonList] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAllPokemon = async () => {
-      const pokemonListData = await getRandomPokemonList(difficulty);
-      setPokemonList(pokemonListData);
+      try {
+        const pokemonListData = await getRandomPokemonList(difficulty);
+
+        setPokemonList(pokemonListData);
+      } catch (e) {
+        console.error("Error during loading:", e);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchAllPokemon();
   }, [difficulty]);
 
-  if (!pokemonList) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (
