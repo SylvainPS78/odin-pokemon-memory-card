@@ -1,4 +1,5 @@
-const getPokemon = async (id) => {
+const getPokemon = async (index) => {
+  const id = index;
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const { name, sprites } = await res.json();
   const image =
