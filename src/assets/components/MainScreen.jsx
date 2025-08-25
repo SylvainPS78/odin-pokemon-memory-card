@@ -7,6 +7,7 @@ const MainScreen = ({ difficulty }) => {
   const [pokemonList, setPokemonList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [round, setRound] = useState(0);
 
   useEffect(() => {
     const fetchAllPokemon = async () => {
@@ -39,6 +40,9 @@ const MainScreen = ({ difficulty }) => {
   return (
     <main role="contentinfo" aria-label="Site main">
       <h1 className="game-title">Pokemon Memory Card Game</h1>
+      <p className="round-progress">
+        {round} / {difficulty}
+      </p>
       <div className="cards-container">
         {pokemonList.map((pokemon) => (
           <Card key={pokemon.id} image={pokemon.image} name={pokemon.name} />
