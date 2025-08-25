@@ -1,20 +1,30 @@
+import React, { useState } from "react";
 import "./assets/styles/Game.css";
 import MainScreen from "./assets/components/MainScreen.jsx";
 import Footer from "./assets/components/Footer.jsx";
 import DifficultyModal from "./assets/components/DifficultyModal.jsx";
 
-let isModalOpen = true;
-let isGameActive = false;
+const Game = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isGameActive, setIsGameActive] = useState(false);
+  const [difficulty, setDifficulty] = useState(null);
 
-function Game() {
+  const handleDifficultySelected = (level) => {
+    setDifficulty(level);
+    setIsModalOpen(false);
+    setIsGameActive(true);
+  };
+
   return (
     <>
-      {isModalOpen && <DifficultyModal />}
-      {isGameActive && <MainScreen />}
+      {isModalOpen && (
+        <DifficultyModal onDifficultySelected={handleDifficultySelected} />
+      )}
+      {isGameActive && <MainScreen difficulty={difficulty} />}
 
       <Footer />
     </>
   );
-}
+};
 
 export default Game;
