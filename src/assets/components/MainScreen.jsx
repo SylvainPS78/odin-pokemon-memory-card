@@ -7,14 +7,12 @@ const MainScreen = () => {
       <p className="game-title">Pokemon Memory Card Game</p>
       <div className="cards-container">
         {" "}
-        <Card id={8} />
+        <Card id={1} />
         <Card id={24} />
         <Card id={54} />
         <Card id={132} />
         <Card id={150} />
         <Card id={151} />
-        <Card id={152} />
-        <Card id={153} />
       </div>
     </main>
   );
