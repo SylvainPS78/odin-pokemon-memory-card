@@ -30,6 +30,7 @@
 .cards-container {
   display: flex;
   flex-wrap: wrap;
+  gap: $spacing-xsm;
 }
 
 .pokemon-card {
@@ -45,7 +46,7 @@
   border-radius: $container-radius;
   padding: $spacing-xsm;
   gap: $spacing-xsm;
-  border: 2px solid $dark-grey;
+  border: 3px solid $dark-grey;
 
   width: 200px;
   height: 280px;
