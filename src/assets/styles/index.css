@@ -38,7 +38,7 @@ body {
   color: #242940;
   background-color: #5367ff;
   font-weight: 400;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }

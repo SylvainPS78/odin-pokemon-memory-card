@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./assets/styles/Game.css";
+
+import DifficultyModal from "./assets/components/DifficultyModal.jsx";
+import Header from "./assets/components/Header.jsx";
 import MainScreen from "./assets/components/MainScreen.jsx";
 import Footer from "./assets/components/Footer.jsx";
-import DifficultyModal from "./assets/components/DifficultyModal.jsx";
 
 const Game = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -20,6 +22,7 @@ const Game = () => {
       {isModalOpen && (
         <DifficultyModal onDifficultySelected={handleDifficultySelected} />
       )}
+      {isGameActive && <Header currentScore={0} highScore={0} />}
       {isGameActive && <MainScreen difficulty={difficulty} />}
 
       <Footer />

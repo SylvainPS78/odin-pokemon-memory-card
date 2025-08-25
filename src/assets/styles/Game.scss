@@ -16,6 +16,19 @@
 }
 
 // ==============================================
+// Layout HEADER
+// ==============================================
+.header {
+  font-size: $font-size-medium;
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+  width: 100vw;
+  color: $white;
+  padding-top: $spacing-xsm;
+}
+
+// ==============================================
 // Layout Game
 // ==============================================
 .game-title {
