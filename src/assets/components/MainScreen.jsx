@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import LoadingMessage from "./LoadingMessage.jsx";
-import getRandomPokemonList from "../utlitis/getRandomPokemonList.js";
+import getRandomPokemonList from "../utilities/getRandomPokemonList.js";
 
 const MainScreen = ({ difficulty }) => {
   const [pokemonList, setPokemonList] = useState(null);
