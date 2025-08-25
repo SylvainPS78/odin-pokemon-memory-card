@@ -64,6 +64,10 @@
   }
 }
 
+// ==============================================
+// Layout Difficulty Modal
+// ==============================================
+
 .difficulty-modal {
   position: fixed;
   top: 50%;
@@ -108,4 +112,29 @@
       color: $primary-blue;
     }
   }
+}
+
+// ==============================================
+// Layout Messages
+// ==============================================
+
+.error-message,
+.loading-message {
+  margin: auto auto;
+  font-family: $font-card;
+  font-size: $font-size-medium;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-image {
+  margin-top: $spacing-md;
+  animation: spin 2s linear infinite;
 }

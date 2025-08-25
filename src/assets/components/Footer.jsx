@@ -17,6 +17,36 @@ const Footer = () => {
           Sylvain Web
         </a>
       </p>
+      <p>
+        {" "}
+        Image by{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Alanyadk profile on Pixabay"
+          href="https://pixabay.com/users/alanyadk-1919646/"
+        >
+          Alanyadk
+        </a>{" "}
+        from{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Pixabay website"
+          href="https://pixabay.com/"
+        >
+          Pixabay
+        </a>{" "}
+        and{" "}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit PokeApi Website"
+          href="https://pokeapi.co/"
+        >
+          PokeAPI
+        </a>
+      </p>
     </footer>
   );
 };

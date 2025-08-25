@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
+import LoadingMessage from "./LoadingMessage.jsx";
 import getRandomPokemonList from "../utlitis/getRandomPokemonList.js";
 
 const MainScreen = ({ difficulty }) => {
@@ -10,7 +11,10 @@ const MainScreen = ({ difficulty }) => {
   useEffect(() => {
     const fetchAllPokemon = async () => {
       try {
-        const pokemonListData = await getRandomPokemonList(difficulty);
+        const [pokemonListData] = await Promise.all([
+          getRandomPokemonList(difficulty),
+          new Promise((resolve) => setTimeout(resolve, 2000)),
+        ]);
 
         setPokemonList(pokemonListData);
       } catch (e) {
@@ -25,11 +29,11 @@ const MainScreen = ({ difficulty }) => {
   }, [difficulty]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingMessage />;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="error-message">Error: {error}</div>;
   }
 
   return (

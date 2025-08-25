@@ -95,4 +95,24 @@
   padding: 0.25rem 0.5rem;
   transform: translateY(-1px);
   color: #5367ff;
+}
+
+.error-message,
+.loading-message {
+  margin: auto auto;
+  font-family: "Press_Start_2P", "Courier New", monospace;
+  font-size: clamp(16px, 2vw + 0.5rem, 25px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading-image {
+  margin-top: 2rem;
+  animation: spin 2s linear infinite;
 }/*# sourceMappingURL=Game.css.map */
