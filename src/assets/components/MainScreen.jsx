@@ -34,7 +34,7 @@ const MainScreen = ({ difficulty }) => {
 
   return (
     <main role="contentinfo" aria-label="Site main">
-      <p className="game-title">Pokemon Memory Card Game</p>
+      <h1 className="game-title">Pokemon Memory Card Game</h1>
       <div className="cards-container">
         {pokemonList.map((pokemon) => (
           <Card key={pokemon.id} image={pokemon.image} name={pokemon.name} />

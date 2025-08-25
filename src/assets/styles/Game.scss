@@ -5,14 +5,15 @@
 // Layout Principal
 // ==============================================
 
-/*#root {
-  max-width: 1280px;
+#root {
   text-align: center;
   background-color: $primary-blue;
   display: flex;
+  flex-direction: column;
 
-  @media (max-width: px) {}
-}*/
+  @media (max-width: px) {
+  }
+}
 
 // ==============================================
 // Layout Game
@@ -20,7 +21,7 @@
 .game-title {
   font-family: $font-game;
   color: $white;
-  margin: $spacing-md 0 $spacing-sm 0;
+  margin: $spacing-md 0;
 }
 
 // ==============================================
@@ -31,13 +32,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-xsm;
+  justify-content: center;
 }
 
 .pokemon-card {
-  position: relative; // TO BE DELETED
-  top: 20vh; // TO BE DELETED
-  left: 5vw; // TO BE DELETED
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
