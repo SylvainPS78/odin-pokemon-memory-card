@@ -37,6 +37,22 @@ body {
   color: $dark-grey;
   background-color: $primary-blue;
   font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Main content
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 // Typography
@@ -80,54 +96,10 @@ a {
   font-weight: 500;
   color: $dark-grey;
   text-decoration: inherit;
-
-  &:hover {
-    color: $primary-blue;
-  }
-}
-
-//button elements - Base styles
-button {
-  background: linear-gradient(135deg, $primary-blue, $light-primary-blue);
-  color: $white;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.4rem;
-  font-size: $font-size-small;
-  cursor: pointer;
   transition: all $transition-normal;
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: $shadow-medium;
-    border-color: $primary-blue;
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-
-  &:disabled {
-    background: $light-grey;
-    color: $medium-grey;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    outline: none;
-
-    &:hover,
-    &:focus,
-    &:active {
-      border: none;
-      transform: none;
-      outline: none;
-      box-shadow: none;
-    }
+    color: $white;
   }
 }
 
@@ -159,13 +131,9 @@ button {
 footer {
   color: $light-grey;
   text-align: center;
-  position: fixed;
-  bottom: 1vh;
-  left: 0;
-  width: 100%;
+  padding: $spacing-sm 0;
+  margin-top: auto;
   font-size: $font-size-small;
-  max-height: 6vh;
-  z-index: $z-index-footer;
 
   // @media (max-width: px) {}
 }
