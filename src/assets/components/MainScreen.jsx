@@ -11,10 +11,10 @@ const MainScreen = () => {
         <Card id={24} />
         <Card id={54} />
         <Card id={132} />
-        <Card id={42} />
-        <Card id={79} />
-        <Card id={92} />
-        <Card id={45} />
+        <Card id={150} />
+        <Card id={151} />
+        <Card id={152} />
+        <Card id={153} />
       </div>
     </main>
   );
