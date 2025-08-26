@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import shuffleArray from "../utilities/shuffleArray.js";
+import alreadyClicked from "../utilities/alreadyClicked.js";
 
 const MainScreen = ({ pokemonList, difficulty }) => {
   const [round, setRound] = useState(0);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
+  const [alreadyClickedList, setAlreadyClickedList] = useState([]);
 
-  const handleCardSelected = () => {
+  const handleCardSelected = (pokemonId) => {
+    if (alreadyClicked(pokemonId, alreadyClickedList)) {
+      alert("GAME OVER");
+    } else {
+      setAlreadyClickedList((prevList) => [...prevList, pokemonId]);
+      setRound((prevRound) => prevRound + 1);
+    }
+
     setShuffledPokemonList(shuffleArray([...pokemonList]));
   };
 
@@ -30,6 +39,7 @@ const MainScreen = ({ pokemonList, difficulty }) => {
         {shuffledPokemonList.map((pokemon) => (
           <Card
             key={pokemon.id}
+            id={pokemon.id}
             image={pokemon.image}
             name={pokemon.name}
             onCardSelected={handleCardSelected}
