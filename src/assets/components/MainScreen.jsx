@@ -1,40 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Card from "./Card.jsx";
-import LoadingMessage from "./LoadingMessage.jsx";
-import getRandomPokemonList from "../utilities/getRandomPokemonList.js";
 
-const MainScreen = ({ difficulty }) => {
-  const [pokemonList, setPokemonList] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+const MainScreen = ({ pokemonList, difficulty }) => {
   const [round, setRound] = useState(0);
 
-  useEffect(() => {
-    const fetchAllPokemon = async () => {
-      try {
-        const [pokemonListData] = await Promise.all([
-          getRandomPokemonList(difficulty),
-          new Promise((resolve) => setTimeout(resolve, 2000)),
-        ]);
-
-        setPokemonList(pokemonListData);
-      } catch (e) {
-        console.error("Error during loading:", e);
-        setError(e.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchAllPokemon();
-  }, [difficulty]);
-
-  if (isLoading) {
-    return <LoadingMessage />;
-  }
-
-  if (error) {
-    return <div className="error-message">Error: {error}</div>;
+  if (!pokemonList || pokemonList.length === 0) {
+    return <div>No Pokemon available</div>;
   }
 
   return (
