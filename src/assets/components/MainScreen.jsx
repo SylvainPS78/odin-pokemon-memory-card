@@ -6,6 +6,10 @@ const MainScreen = ({ pokemonList, difficulty }) => {
   const [round, setRound] = useState(0);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
 
+  const handleCardSelected = () => {
+    setShuffledPokemonList(shuffleArray([...pokemonList]));
+  };
+
   useEffect(() => {
     if (pokemonList && pokemonList.length > 0) {
       setShuffledPokemonList(shuffleArray([...pokemonList]));
@@ -24,7 +28,12 @@ const MainScreen = ({ pokemonList, difficulty }) => {
       </p>
       <div className="cards-container">
         {shuffledPokemonList.map((pokemon) => (
-          <Card key={pokemon.id} image={pokemon.image} name={pokemon.name} />
+          <Card
+            key={pokemon.id}
+            image={pokemon.image}
+            name={pokemon.name}
+            onCardSelected={handleCardSelected}
+          />
         ))}
       </div>
     </main>
