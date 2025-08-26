@@ -1,5 +1,3 @@
-import React from "react";
-
 const DifficultyModal = ({ onDifficultySelected }) => {
   return (
     <div className="difficulty-modal">

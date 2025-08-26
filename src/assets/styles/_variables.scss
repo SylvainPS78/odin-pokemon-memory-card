@@ -46,8 +46,11 @@ $transition-slow: 0.5s ease;
 
 // Z-index Scale
 $z-index-footer: 10;
-$z-index-modal: 100;
-$z-index-overlay: 1000;
+$z-index-overlay: 100;
+$z-index-modal: 1000;
+
+// Overlay Settings
+$overlay-bg: rgba($black, 0.5);
 
 // Box Shadow Presets
 $shadow-light: 0 2px 8px rgba($dark-grey, 0.1);

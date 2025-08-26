@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./assets/styles/Game.css";
 import DifficultyModal from "./assets/components/DifficultyModal.jsx";
+import WinModal from "./assets/components/WinModal.jsx";
 import Header from "./assets/components/Header.jsx";
 import MainScreen from "./assets/components/MainScreen.jsx";
 import Footer from "./assets/components/Footer.jsx";
@@ -15,6 +16,11 @@ const Game = () => {
   const [slicedPokemonList, setSlicedlPokemonList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isWon, setIsWon] = useState(false);
+
+  const handleIsWon = () => {
+    setIsWon(true);
+  };
 
   const handleDifficultySelected = (level) => {
     setDifficulty(level);
@@ -65,9 +71,12 @@ const Game = () => {
             <MainScreen
               pokemonList={slicedPokemonList}
               difficulty={difficulty}
+              onIsWon={handleIsWon}
             />
           </>
         ))}
+
+      {isWon && <WinModal />}
 
       <Footer />
     </>

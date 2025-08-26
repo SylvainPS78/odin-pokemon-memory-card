@@ -3,7 +3,7 @@ import Card from "./Card.jsx";
 import shuffleArray from "../utilities/shuffleArray.js";
 import alreadyClicked from "../utilities/alreadyClicked.js";
 
-const MainScreen = ({ pokemonList, difficulty }) => {
+const MainScreen = ({ pokemonList, difficulty, onIsWon }) => {
   const [round, setRound] = useState(1);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
   const [alreadyClickedList, setAlreadyClickedList] = useState([]);
@@ -15,15 +15,18 @@ const MainScreen = ({ pokemonList, difficulty }) => {
       setAlreadyClickedList((prevList) => [...prevList, pokemonId]);
       setRound((prevRound) => {
         const newRound = prevRound + 1;
-        if (newRound > difficulty) {
-          alert("YOU WON !");
-        }
         return newRound;
       });
     }
 
     setShuffledPokemonList(shuffleArray([...pokemonList]));
   };
+
+  useEffect(() => {
+    if (round > difficulty) {
+      onIsWon(true);
+    }
+  }, [round, difficulty, onIsWon]);
 
   useEffect(() => {
     if (pokemonList && pokemonList.length > 0) {

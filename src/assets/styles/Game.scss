@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $white;
+  background-color: $light-grey;
   border-radius: $container-radius;
   padding: $spacing-sm;
   gap: $spacing-xsm;
@@ -156,4 +156,103 @@
 .loading-image {
   margin-top: $spacing-md;
   animation: spin 2s linear infinite;
+}
+
+// ==============================================
+// Modal Overlay System
+// ==============================================
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $overlay-bg;
+  z-index: $z-index-overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn $transition-normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ==============================================
+// Win Modal Styles
+// ==============================================
+
+.win-modal {
+  background-color: $light-grey;
+  border-radius: $container-radius;
+  padding: $spacing-md;
+  box-shadow: $shadow-heavy;
+  text-align: center;
+  z-index: $z-index-modal;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: slideUp $transition-slow;
+
+  &-title {
+    font-family: $font-card;
+    font-size: $font-size-medium;
+    color: $dark-grey;
+    margin-bottom: $spacing-sm;
+  }
+
+  &-score {
+    font-family: $font-card;
+    font-size: $font-size-medium;
+    color: $dark-grey;
+    margin-bottom: $spacing-md;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: $spacing-sm;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &-button {
+    font-family: $font-card;
+    font-size: $font-size-small;
+    background-color: $primary-blue;
+    color: $white;
+    border: none;
+    border-radius: $input-radius;
+    padding: $spacing-sm $spacing-md;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $light-primary-blue;
+    }
+
+    &--secondary {
+      background-color: $medium-grey;
+
+      &:hover {
+        background-color: $dark-grey;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
