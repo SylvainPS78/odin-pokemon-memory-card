@@ -4,7 +4,7 @@ import shuffleArray from "../utilities/shuffleArray.js";
 import alreadyClicked from "../utilities/alreadyClicked.js";
 
 const MainScreen = ({ pokemonList, difficulty, onIsWon }) => {
-  const [round, setRound] = useState(1);
+  const [round, setRound] = useState(0);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
   const [alreadyClickedList, setAlreadyClickedList] = useState([]);
 
@@ -23,7 +23,7 @@ const MainScreen = ({ pokemonList, difficulty, onIsWon }) => {
   };
 
   useEffect(() => {
-    if (round > difficulty) {
+    if (round === difficulty) {
       onIsWon(true);
     }
   }, [round, difficulty, onIsWon]);

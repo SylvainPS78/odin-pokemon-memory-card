@@ -84,10 +84,11 @@
 }
 
 // ==============================================
-// Layout Difficulty Modal
+// Layout Modals
 // ==============================================
 
-.difficulty-modal {
+.difficulty-modal,
+.win-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -101,8 +102,10 @@
   padding: $spacing-sm;
   gap: $spacing-xsm;
   border: 3px solid $dark-grey;
+  box-shadow: $shadow-heavy;
 
   &-title {
+    color: $dark-grey;
     font-family: $font-card;
     font-size: $font-size-small;
     text-align: center;
@@ -110,7 +113,7 @@
 
   &-button {
     font-family: $font-game;
-    background-color: $white;
+    background-color: $light-grey;
     font-size: $font-size-small;
     border: none;
     cursor: pointer;
@@ -190,60 +193,9 @@
 // ==============================================
 
 .win-modal {
-  background-color: $light-grey;
-  border-radius: $container-radius;
-  padding: $spacing-md;
-  box-shadow: $shadow-heavy;
-  text-align: center;
-  z-index: $z-index-modal;
   max-width: 90vw;
   max-height: 90vh;
   animation: slideUp $transition-slow;
-
-  &-title {
-    font-family: $font-card;
-    font-size: $font-size-medium;
-    color: $dark-grey;
-    margin-bottom: $spacing-sm;
-  }
-
-  &-score {
-    font-family: $font-card;
-    font-size: $font-size-medium;
-    color: $dark-grey;
-    margin-bottom: $spacing-md;
-  }
-
-  &-buttons {
-    display: flex;
-    gap: $spacing-sm;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  &-button {
-    font-family: $font-card;
-    font-size: $font-size-small;
-    background-color: $primary-blue;
-    color: $white;
-    border: none;
-    border-radius: $input-radius;
-    padding: $spacing-sm $spacing-md;
-    cursor: pointer;
-    transition: background-color $transition-fast;
-
-    &:hover {
-      background-color: $light-primary-blue;
-    }
-
-    &--secondary {
-      background-color: $medium-grey;
-
-      &:hover {
-        background-color: $dark-grey;
-      }
-    }
-  }
 }
 
 @keyframes slideUp {
