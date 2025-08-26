@@ -4,7 +4,7 @@ import shuffleArray from "../utilities/shuffleArray.js";
 import alreadyClicked from "../utilities/alreadyClicked.js";
 
 const MainScreen = ({ pokemonList, difficulty }) => {
-  const [round, setRound] = useState(0);
+  const [round, setRound] = useState(1);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
   const [alreadyClickedList, setAlreadyClickedList] = useState([]);
 
@@ -13,7 +13,13 @@ const MainScreen = ({ pokemonList, difficulty }) => {
       alert("GAME OVER");
     } else {
       setAlreadyClickedList((prevList) => [...prevList, pokemonId]);
-      setRound((prevRound) => prevRound + 1);
+      setRound((prevRound) => {
+        const newRound = prevRound + 1;
+        if (newRound > difficulty) {
+          alert("YOU WON !");
+        }
+        return newRound;
+      });
     }
 
     setShuffledPokemonList(shuffleArray([...pokemonList]));
