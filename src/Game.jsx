@@ -33,7 +33,7 @@ const Game = () => {
       try {
         const [pokemonListData] = await Promise.all([
           getRandomPokemonList(15),
-          new Promise((resolve) => setTimeout(resolve, 10)),
+          new Promise((resolve) => setTimeout(resolve, 2000)),
         ]);
         setFullPokemonList(pokemonListData);
       } catch (e) {
