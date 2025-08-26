@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./Card.jsx";
+import shuffleArray from "../utilities/shuffleArray.js";
 
 const MainScreen = ({ pokemonList, difficulty }) => {
   const [round, setRound] = useState(0);
+  const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
+
+  useEffect(() => {
+    if (pokemonList && pokemonList.length > 0) {
+      setShuffledPokemonList(shuffleArray([...pokemonList]));
+    }
+  }, [pokemonList]);
 
   if (!pokemonList || pokemonList.length === 0) {
     return <div>No Pokemon available</div>;
@@ -15,7 +23,7 @@ const MainScreen = ({ pokemonList, difficulty }) => {
         {round} / {difficulty}
       </p>
       <div className="cards-container">
-        {pokemonList.map((pokemon) => (
+        {shuffledPokemonList.map((pokemon) => (
           <Card key={pokemon.id} image={pokemon.image} name={pokemon.name} />
         ))}
       </div>
