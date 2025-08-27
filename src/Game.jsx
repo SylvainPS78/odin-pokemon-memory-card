@@ -20,6 +20,9 @@ const Game = () => {
   const [isWon, setIsWon] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
+  const [maxScore, setMaxScore] = useState(() => {
+    return parseInt(localStorage.getItem("pokemonMaxScore") || "0");
+  });
 
   const handleIsWon = () => {
     setIsWon(true);
@@ -27,6 +30,11 @@ const Game = () => {
 
   const handleCurrentScore = (score) => {
     setCurrentScore(score);
+
+    if (score > maxScore) {
+      setMaxScore(score);
+      localStorage.setItem("pokemonMaxScore", score.toString());
+    }
   };
 
   const handleIsGameOver = () => {
@@ -78,7 +86,7 @@ const Game = () => {
         ) : (
           <>
             {" "}
-            <Header currentScore={currentScore} highScore={0} />{" "}
+            <Header currentScore={currentScore} maxScore={maxScore} />{" "}
             <MainScreen
               pokemonList={slicedPokemonList}
               difficulty={difficulty}
