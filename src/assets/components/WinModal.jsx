@@ -1,10 +1,18 @@
-const WinModal = ({ finalScore, onExitSelected, onPlayAgainSelected }) => {
+const WinModal = ({
+  finalScore,
+  onExitSelected,
+  onPlayAgainSelected,
+  onContinuePlayingSelected,
+}) => {
   return (
     <div className="modal-overlay">
       <div className="win-modal">
         <h2 className="win-modal-title">Congratulation, you Won !</h2>
         <p className="win-modal-final-score">Your score is : {finalScore}</p>
-        <button className="win-modal-button continue-button">
+        <button
+          className="win-modal-button continue-button"
+          onClick={() => onContinuePlayingSelected()}
+        >
           Continue Playing
         </button>
         <button

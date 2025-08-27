@@ -20,6 +20,7 @@ const Game = () => {
   const [isWon, setIsWon] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
+  const [currentRound, setCurrentRound] = useState(0);
   const [maxScore, setMaxScore] = useState(() => {
     return parseInt(localStorage.getItem("pokemonMaxScore") || "0");
   });
@@ -37,8 +38,8 @@ const Game = () => {
     setSlicedlPokemonList(null);
     setFullPokemonList(null);
     setIsLoading(true);
-    //isError
     setCurrentScore(0);
+    setCurrentRound(0);
   };
 
   const handlePlayAgainButton = () => {
@@ -48,14 +49,24 @@ const Game = () => {
     setSlicedlPokemonList(null);
     setFullPokemonList(null);
     setCurrentScore(0);
+    setCurrentRound(0);
   };
 
-  const handleCurrentScore = (score) => {
-    setCurrentScore(score);
+  const handleContinuePlayingButton = () => {
+    setIsWon(false);
+    setIsGameOver(false);
+    setIsLoading(true);
+    setSlicedlPokemonList(null);
+    setFullPokemonList(null);
+  };
 
-    if (score > maxScore) {
-      setMaxScore(score);
-      localStorage.setItem("pokemonMaxScore", score.toString());
+  const handleCurrentScore = (newRound) => {
+    setCurrentRound(newRound);
+    setCurrentScore(newRound);
+
+    if (newRound > maxScore) {
+      setMaxScore(newRound);
+      localStorage.setItem("pokemonMaxScore", newRound.toString());
     }
   };
 
@@ -115,7 +126,8 @@ const Game = () => {
               difficulty={difficulty}
               onIsWon={handleIsWon}
               onIsGameOver={handleIsGameOver}
-              onScoreUpdate={handleCurrentScore}
+              onRoundUpdate={handleCurrentScore}
+              currentRound={currentRound}
             />
           </>
         ))}
@@ -125,6 +137,7 @@ const Game = () => {
           finalScore={currentScore}
           onExitSelected={handleExitButton}
           onPlayAgainSelected={handlePlayAgainButton}
+          onContinuePlayingSelected={handleContinuePlayingButton}
         />
       )}
       {isGameOver && (

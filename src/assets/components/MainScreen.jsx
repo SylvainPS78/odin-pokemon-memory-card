@@ -7,10 +7,10 @@ const MainScreen = ({
   pokemonList,
   difficulty,
   onIsWon,
+  currentRound,
   onIsGameOver,
-  onScoreUpdate,
+  onRoundUpdate,
 }) => {
-  const [round, setRound] = useState(0);
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
   const [alreadyClickedList, setAlreadyClickedList] = useState([]);
 
@@ -19,9 +19,8 @@ const MainScreen = ({
       onIsGameOver(true);
     } else {
       setAlreadyClickedList((prevList) => [...prevList, pokemonId]);
-      const newRound = round + 1;
-      setRound(newRound);
-      onScoreUpdate(newRound);
+      const newRound = currentRound + 1;
+      onRoundUpdate(newRound);
 
       if (newRound === difficulty) {
         onIsWon(true);
@@ -45,7 +44,7 @@ const MainScreen = ({
     <main role="contentinfo" aria-label="Site main">
       <h1 className="game-title">Pokemon Memory Card Game</h1>
       <p className="round-progress">
-        {round} / {difficulty}
+        {currentRound} / {difficulty}
       </p>
       <div className="cards-container">
         {shuffledPokemonList.map((pokemon) => (
