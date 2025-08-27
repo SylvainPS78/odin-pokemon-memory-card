@@ -96,22 +96,24 @@ const Game = () => {
 
   // Initial Fetch, componant mount
   useEffect(() => {
-    const fetchInitialPokemon = async () => {
-      try {
-        const [pokemonListData] = await Promise.all([
-          getRandomPokemonList(15),
-          new Promise((resolve) => setTimeout(resolve, 2000)),
-        ]);
-        setFullPokemonList(pokemonListData);
-      } catch (e) {
-        console.error("Error during initial loading:", e);
-        setError(e.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchInitialPokemon();
-  }, []);
+    if (!fullPokemonList) {
+      const fetchInitialPokemon = async () => {
+        try {
+          const [pokemonListData] = await Promise.all([
+            getRandomPokemonList(15),
+            new Promise((resolve) => setTimeout(resolve, 2000)),
+          ]);
+          setFullPokemonList(pokemonListData);
+        } catch (e) {
+          console.error("Error during initial loading:", e);
+          setError(e.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchInitialPokemon();
+    }
+  }, [fullPokemonList]);
 
   // useEffect for additionnal fetch if required
   useEffect(() => {
