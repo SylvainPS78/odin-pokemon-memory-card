@@ -94,27 +94,46 @@ const Game = () => {
     }
   }, [fullPokemonList, difficulty]);
 
+  // Initial Fetch, componant mount
   useEffect(() => {
-    if (!fullPokemonList) {
-      const fetchAllPokemon = async () => {
+    const fetchInitialPokemon = async () => {
+      try {
+        const [pokemonListData] = await Promise.all([
+          getRandomPokemonList(15),
+          new Promise((resolve) => setTimeout(resolve, 2000)),
+        ]);
+        setFullPokemonList(pokemonListData);
+      } catch (e) {
+        console.error("Error during initial loading:", e);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchInitialPokemon();
+  }, []);
+
+  // useEffect for additionnal fetch if required
+  useEffect(() => {
+    if (difficulty && fullPokemonList && fullPokemonList.length < difficulty) {
+      setIsLoading(true);
+      const fetchMorePokemon = async () => {
         try {
           const [pokemonListData] = await Promise.all([
-            isGameActive
-              ? getRandomPokemonList(difficulty)
-              : getRandomPokemonList(15),
+            getRandomPokemonList(difficulty),
             new Promise((resolve) => setTimeout(resolve, 2000)),
           ]);
           setFullPokemonList(pokemonListData);
         } catch (e) {
-          console.error("Error during loading:", e);
+          console.error("Error during additional loading:", e);
           setError(e.message);
         } finally {
           setIsLoading(false);
         }
       };
-      fetchAllPokemon();
+      fetchMorePokemon();
     }
-  }, [fullPokemonList, isGameActive, difficulty]);
+  }, [difficulty, fullPokemonList]);
 
   return (
     <>
