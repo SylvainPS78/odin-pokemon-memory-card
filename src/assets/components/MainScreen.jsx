@@ -5,7 +5,7 @@ import alreadyClicked from "../utilities/alreadyClicked.js";
 
 const MainScreen = ({
   pokemonList,
-  difficulty,
+  maxRound,
   onIsWon,
   currentRound,
   onIsGameOver,
@@ -22,7 +22,7 @@ const MainScreen = ({
       const newRound = currentRound + 1;
       onRoundUpdate(newRound);
 
-      if (newRound === difficulty) {
+      if (newRound === maxRound) {
         onIsWon(true);
       }
     }
@@ -44,7 +44,7 @@ const MainScreen = ({
     <main role="contentinfo" aria-label="Site main">
       <h1 className="game-title">Pokemon Memory Card Game</h1>
       <p className="round-progress">
-        {currentRound} / {difficulty}
+        {currentRound} / {maxRound}
       </p>
       <div className="cards-container">
         {shuffledPokemonList.map((pokemon) => (

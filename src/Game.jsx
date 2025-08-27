@@ -21,6 +21,7 @@ const Game = () => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [currentRound, setCurrentRound] = useState(0);
+  const [maxRound, setMaxRound] = useState(0);
   const [maxScore, setMaxScore] = useState(() => {
     return parseInt(localStorage.getItem("pokemonMaxScore") || "0");
   });
@@ -40,6 +41,7 @@ const Game = () => {
     setIsLoading(true);
     setCurrentScore(0);
     setCurrentRound(0);
+    setMaxRound(null);
   };
 
   const handlePlayAgainButton = () => {
@@ -50,6 +52,7 @@ const Game = () => {
     setFullPokemonList(null);
     setCurrentScore(0);
     setCurrentRound(0);
+    setMaxRound(difficulty);
   };
 
   const handleContinuePlayingButton = () => {
@@ -58,6 +61,10 @@ const Game = () => {
     setIsLoading(true);
     setSlicedlPokemonList(null);
     setFullPokemonList(null);
+    const newDifficulty = difficulty + 1;
+    setDifficulty(newDifficulty);
+    const newMaxRound = maxRound + newDifficulty;
+    setMaxRound(newMaxRound);
   };
 
   const handleCurrentScore = (newRound) => {
@@ -78,6 +85,7 @@ const Game = () => {
     setDifficulty(level);
     setIsDiffModalOpen(false);
     setIsGameActive(true);
+    setMaxRound(level);
   };
 
   useEffect(() => {
@@ -123,7 +131,7 @@ const Game = () => {
             <Header currentScore={currentScore} maxScore={maxScore} />{" "}
             <MainScreen
               pokemonList={slicedPokemonList}
-              difficulty={difficulty}
+              maxRound={maxRound}
               onIsWon={handleIsWon}
               onIsGameOver={handleIsGameOver}
               onRoundUpdate={handleCurrentScore}
