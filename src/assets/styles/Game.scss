@@ -52,6 +52,13 @@
   flex-wrap: wrap;
   gap: $spacing-xsm;
   justify-content: center;
+
+  &.fading-out .pokemon-card {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all $transition-slow;
+    pointer-events: none;
+  }
 }
 
 .pokemon-card {
@@ -64,6 +71,7 @@
   padding: $spacing-xsm;
   gap: $spacing-xsm;
   border: 3px solid $dark-grey;
+  cursor: pointer;
 
   width: 200px;
   height: 280px;
@@ -80,6 +88,12 @@
     color: $dark-grey;
     font-weight: bold;
     flex-shrink: 0;
+  }
+
+  &.pulsing {
+    animation: pulse $transition-slow;
+    z-index: 10;
+    // Pas de transition CSS pour éviter les conflits
   }
 }
 
@@ -160,6 +174,18 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

@@ -13,8 +13,20 @@ const MainScreen = ({
 }) => {
   const [shuffledPokemonList, setShuffledPokemonList] = useState([]);
   const [alreadyClickedList, setAlreadyClickedList] = useState([]);
+  const [animatingCardId, setAnimatingCardId] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleCardSelected = (pokemonId) => {
+  const handleCardSelected = async (pokemonId) => {
+    setAnimatingCardId(pokemonId);
+    setIsAnimating(true);
+    
+    // Phase 1: Pulse de la carte cliquée
+    await new Promise(resolve => setTimeout(resolve, 200));
+    
+    // Phase 2: Fade out de toutes les cartes
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    // Logique de jeu
     if (alreadyClicked(pokemonId, alreadyClickedList)) {
       onIsGameOver(true);
     } else {
@@ -26,8 +38,14 @@ const MainScreen = ({
         onIsWon(true);
       }
     }
-
+    
+    // Phase 3: Mélange et fade in
     setShuffledPokemonList(shuffleArray([...pokemonList]));
+    
+    setTimeout(() => {
+      setAnimatingCardId(null);
+      setIsAnimating(false);
+    }, 100);
   };
 
   useEffect(() => {
@@ -46,7 +64,7 @@ const MainScreen = ({
       <p className="round-progress">
         {currentRound} / {maxRound}
       </p>
-      <div className="cards-container">
+      <div className={`cards-container ${isAnimating ? 'fading-out' : ''}`}>
         {shuffledPokemonList.map((pokemon) => (
           <Card
             key={pokemon.id}
@@ -54,6 +72,7 @@ const MainScreen = ({
             image={pokemon.image}
             name={pokemon.name}
             onCardSelected={handleCardSelected}
+            isPulsing={animatingCardId === pokemon.id}
           />
         ))}
       </div>

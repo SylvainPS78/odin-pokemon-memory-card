@@ -44,6 +44,12 @@
   gap: 0.5rem;
   justify-content: center;
 }
+.cards-container.fading-out .pokemon-card {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
 
 .pokemon-card {
   display: flex;
@@ -55,6 +61,7 @@
   padding: 0.5rem;
   gap: 0.5rem;
   border: 3px solid #242940;
+  cursor: pointer;
   width: 200px;
   height: 280px;
 }
@@ -70,6 +77,10 @@
   color: #242940;
   font-weight: bold;
   flex-shrink: 0;
+}
+.pokemon-card.pulsing {
+  animation: pulse 0.5s ease;
+  z-index: 10;
 }
 
 .difficulty-modal,
@@ -147,6 +158,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 .loading-image {
