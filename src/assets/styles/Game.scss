@@ -26,6 +26,9 @@
   width: 100vw;
   color: $white;
   padding-top: $spacing-xsm;
+  @media (max-width: 768px) {
+    font-size: $font-size-small;
+  }
 }
 
 // ==============================================
@@ -35,6 +38,10 @@
   font-family: $font-game;
   color: $white;
   margin: $spacing-sm 0 $spacing-xsm 0;
+
+  @media (max-width: 768px) {
+    font-size: $font-size-medium;
+  }
 }
 
 .round-progress {
@@ -79,6 +86,7 @@
   @media (max-width: 768px) {
     width: 150px;
     height: 210px;
+    font-size: $font-size-extra-small;
   }
 
   &-img {
@@ -98,7 +106,6 @@
   &.pulsing {
     animation: pulse $transition-slow;
     z-index: 10;
-    // Pas de transition CSS pour éviter les conflits
   }
 }
 

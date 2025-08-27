@@ -123,4 +123,9 @@ footer {
   padding: 1rem 0;
   margin-top: auto;
   font-size: clamp(12px, 1.5vw + 0.375rem, 18.75px);
+}
+@media (max-width: 768px) {
+  footer {
+    font-size: clamp(8px, 1vw + 0.25rem, 12.5px);
+  }
 }/*# sourceMappingURL=index.css.map */
