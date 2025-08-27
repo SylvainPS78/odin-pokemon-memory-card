@@ -48,23 +48,23 @@ const Game = () => {
     setIsWon(false);
     setIsGameOver(false);
     setIsLoading(true);
-    setSlicedlPokemonList(null);
-    setFullPokemonList(null);
     setCurrentScore(0);
     setCurrentRound(0);
     setMaxRound(difficulty);
+    setSlicedlPokemonList(null);
+    setFullPokemonList(null);
   };
 
   const handleContinuePlayingButton = () => {
     setIsWon(false);
     setIsGameOver(false);
     setIsLoading(true);
-    setSlicedlPokemonList(null);
-    setFullPokemonList(null);
     const newDifficulty = difficulty + 1;
     setDifficulty(newDifficulty);
     const newMaxRound = maxRound + newDifficulty;
     setMaxRound(newMaxRound);
+    setSlicedlPokemonList(null);
+    setFullPokemonList(null);
   };
 
   const handleCurrentScore = (newRound) => {
@@ -99,7 +99,9 @@ const Game = () => {
       const fetchAllPokemon = async () => {
         try {
           const [pokemonListData] = await Promise.all([
-            getRandomPokemonList(15),
+            isGameActive
+              ? getRandomPokemonList(difficulty)
+              : getRandomPokemonList(15),
             new Promise((resolve) => setTimeout(resolve, 2000)),
           ]);
           setFullPokemonList(pokemonListData);
@@ -112,7 +114,7 @@ const Game = () => {
       };
       fetchAllPokemon();
     }
-  }, [fullPokemonList]);
+  }, [fullPokemonList, isGameActive, difficulty]);
 
   return (
     <>
