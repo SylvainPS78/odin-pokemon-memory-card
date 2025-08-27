@@ -19,9 +19,14 @@ const Game = () => {
   const [error, setError] = useState(null);
   const [isWon, setIsWon] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
 
   const handleIsWon = () => {
     setIsWon(true);
+  };
+
+  const handleCurrentScore = (score) => {
+    setCurrentScore(score);
   };
 
   const handleIsGameOver = () => {
@@ -73,18 +78,19 @@ const Game = () => {
         ) : (
           <>
             {" "}
-            <Header currentScore={0} highScore={0} />{" "}
+            <Header currentScore={currentScore} highScore={0} />{" "}
             <MainScreen
               pokemonList={slicedPokemonList}
               difficulty={difficulty}
               onIsWon={handleIsWon}
               onIsGameOver={handleIsGameOver}
+              onScoreUpdate={handleCurrentScore}
             />
           </>
         ))}
 
-      {isWon && <WinModal />}
-      {isGameOver && <GameOverModal />}
+      {isWon && <WinModal finalScore={currentScore} />}
+      {isGameOver && <GameOverModal finalScore={currentScore} />}
 
       <Footer />
     </>

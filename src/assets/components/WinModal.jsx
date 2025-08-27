@@ -1,8 +1,9 @@
-const WinModal = () => {
+const WinModal = ({ finalScore }) => {
   return (
     <div className="modal-overlay">
       <div className="win-modal">
         <h2 className="win-modal-title">Congratulation, you Won !</h2>
+        <p className="win-modal-final-score">Your score is : {finalScore}</p>
         <button className="win-modal-button continue-button">
           Continue Playing
         </button>

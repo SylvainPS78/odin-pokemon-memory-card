@@ -98,6 +98,13 @@
   font-size: clamp(12px, 1.5vw + 0.375rem, 18.75px);
   text-align: center;
 }
+.difficulty-modal-final-score,
+.win-modal-final-score,
+.game-over-modal-final-score {
+  color: #242940;
+  font-family: "Orbitron", "Impact", "Franklin Gothic Bold", sans-serif;
+  font-size: clamp(16px, 2vw + 0.5rem, 25px);
+}
 .difficulty-modal-button,
 .win-modal-button,
 .game-over-modal-button {

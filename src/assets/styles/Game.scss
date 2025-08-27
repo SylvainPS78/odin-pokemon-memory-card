@@ -112,6 +112,12 @@
     text-align: center;
   }
 
+  &-final-score {
+    color: $dark-grey;
+    font-family: $font-game;
+    font-size: $font-size-medium;
+  }
+
   &-button {
     font-family: $font-game;
     background-color: $light-grey;
