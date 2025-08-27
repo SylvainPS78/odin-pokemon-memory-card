@@ -65,6 +65,12 @@
   width: 200px;
   height: 280px;
 }
+@media (max-width: 768px) {
+  .pokemon-card {
+    width: 150px;
+    height: 210px;
+  }
+}
 .pokemon-card-img {
   width: 100%;
   flex: 1;
