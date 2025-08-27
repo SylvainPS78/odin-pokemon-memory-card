@@ -10,7 +10,7 @@ import LoadingMessage from "./assets/components/LoadingMessage.jsx";
 import getRandomPokemonList from "./assets/utilities/getRandomPokemonList.js";
 
 const Game = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isDiffModalOpen, setIsDiffModalOpen] = useState(true);
   const [isGameActive, setIsGameActive] = useState(false);
   const [difficulty, setDifficulty] = useState(null);
   const [fullPokemonList, setFullPokemonList] = useState(null);
@@ -28,6 +28,19 @@ const Game = () => {
     setIsWon(true);
   };
 
+  const handleExitButton = () => {
+    setIsGameActive(false);
+    setIsWon(false);
+    setIsGameOver(false);
+    setIsDiffModalOpen(true);
+    setDifficulty(null);
+    setFullPokemonList(null);
+    setSlicedlPokemonList(null);
+    setIsLoading(true);
+    //isError
+    setCurrentScore(0);
+  };
+
   const handleCurrentScore = (score) => {
     setCurrentScore(score);
 
@@ -43,7 +56,7 @@ const Game = () => {
 
   const handleDifficultySelected = (level) => {
     setDifficulty(level);
-    setIsModalOpen(false);
+    setIsDiffModalOpen(false);
     setIsGameActive(true);
   };
 
@@ -54,27 +67,28 @@ const Game = () => {
   }, [fullPokemonList, difficulty]);
 
   useEffect(() => {
-    const fetchAllPokemon = async () => {
-      try {
-        const [pokemonListData] = await Promise.all([
-          getRandomPokemonList(15),
-          new Promise((resolve) => setTimeout(resolve, 2000)),
-        ]);
-        setFullPokemonList(pokemonListData);
-      } catch (e) {
-        console.error("Error during loading:", e);
-        setError(e.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchAllPokemon();
-  }, []);
+    if (!fullPokemonList) {
+      const fetchAllPokemon = async () => {
+        try {
+          const [pokemonListData] = await Promise.all([
+            getRandomPokemonList(15),
+            new Promise((resolve) => setTimeout(resolve, 2000)),
+          ]);
+          setFullPokemonList(pokemonListData);
+        } catch (e) {
+          console.error("Error during loading:", e);
+          setError(e.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchAllPokemon();
+    }
+  }, [fullPokemonList]);
 
   return (
     <>
-      {isModalOpen && (
+      {isDiffModalOpen && (
         <DifficultyModal onDifficultySelected={handleDifficultySelected} />
       )}
 
@@ -97,8 +111,15 @@ const Game = () => {
           </>
         ))}
 
-      {isWon && <WinModal finalScore={currentScore} />}
-      {isGameOver && <GameOverModal finalScore={currentScore} />}
+      {isWon && (
+        <WinModal finalScore={currentScore} onExitSelected={handleExitButton} />
+      )}
+      {isGameOver && (
+        <GameOverModal
+          finalScore={currentScore}
+          onExitSelected={handleExitButton}
+        />
+      )}
 
       <Footer />
     </>
