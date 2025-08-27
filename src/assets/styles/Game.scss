@@ -88,7 +88,8 @@
 // ==============================================
 
 .difficulty-modal,
-.win-modal {
+.win-modal,
+.game-over-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -192,7 +193,8 @@
 // Win Modal Styles
 // ==============================================
 
-.win-modal {
+.win-modal,
+.game-over-modal {
   max-width: 90vw;
   max-height: 90vh;
   animation: slideUp $transition-slow;
