@@ -1,4 +1,4 @@
-const WinModal = ({ finalScore, onExitSelected }) => {
+const WinModal = ({ finalScore, onExitSelected, onPlayAgainSelected }) => {
   return (
     <div className="modal-overlay">
       <div className="win-modal">
@@ -7,12 +7,15 @@ const WinModal = ({ finalScore, onExitSelected }) => {
         <button className="win-modal-button continue-button">
           Continue Playing
         </button>
-        <button className="win-modal-button play-again-button">
+        <button
+          className="win-modal-button play-again-button"
+          onClick={() => onPlayAgainSelected()}
+        >
           Play Again
         </button>
         <button
           className="win-modal-button exit-button"
-          onClick={onExitSelected()}
+          onClick={() => onExitSelected()}
         >
           Exit
         </button>

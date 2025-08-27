@@ -34,10 +34,19 @@ const Game = () => {
     setIsGameOver(false);
     setIsDiffModalOpen(true);
     setDifficulty(null);
-    setFullPokemonList(null);
     setSlicedlPokemonList(null);
+    setFullPokemonList(null);
     setIsLoading(true);
     //isError
+    setCurrentScore(0);
+  };
+
+  const handlePlayAgainButton = () => {
+    setIsWon(false);
+    setIsGameOver(false);
+    setIsLoading(true);
+    setSlicedlPokemonList(null);
+    setFullPokemonList(null);
     setCurrentScore(0);
   };
 
@@ -112,12 +121,17 @@ const Game = () => {
         ))}
 
       {isWon && (
-        <WinModal finalScore={currentScore} onExitSelected={handleExitButton} />
+        <WinModal
+          finalScore={currentScore}
+          onExitSelected={handleExitButton}
+          onPlayAgainSelected={handlePlayAgainButton}
+        />
       )}
       {isGameOver && (
         <GameOverModal
           finalScore={currentScore}
           onExitSelected={handleExitButton}
+          onPlayAgainSelected={handlePlayAgainButton}
         />
       )}
 

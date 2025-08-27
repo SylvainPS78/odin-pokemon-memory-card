@@ -1,4 +1,4 @@
-const GameOverModal = ({ finalScore, onExitSelected }) => {
+const GameOverModal = ({ finalScore, onExitSelected, onPlayAgainSelected }) => {
   return (
     <div className="modal-overlay">
       <div className="game-over-modal">
@@ -6,7 +6,10 @@ const GameOverModal = ({ finalScore, onExitSelected }) => {
         <p className="game-over-modal-final-score">
           Your score is : {finalScore}
         </p>
-        <button className="game-over-modal-button play-again-button">
+        <button
+          className="game-over-modal-button play-again-button"
+          onClick={() => onPlayAgainSelected()}
+        >
           Play Again
         </button>
         <button
